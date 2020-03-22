@@ -7,7 +7,7 @@ def solution(phone_book):
     
     for phone in phone_book:
         for l in length_list:
-            if len(phone) > l and phone[0:l] in book_map:
+            if len(phone) > l and phone[:l] in book_map:
                 return False
         
     return True

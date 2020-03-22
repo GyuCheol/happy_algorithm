@@ -1,19 +1,11 @@
-
+from collections import Counter
 
 def solution2(participant, completion):
-    d = {}
-
-    for p in participant: # O(N)
-        if p in d:
-            d[p] = d[p] + 1
-        else:
-            d[p] = 1
+    par_map = Counter([p for p in participant]) # O(N)
+    comp_map = Counter([p for p in completion]) # O(N)
     
-    for com in completion: # O(N)
-        d[com] = d[com] - 1
-
-    for name, v in d.items(): # O(N)
-        if v == 1:
+    for name, v in par_map.items(): # O(N)
+        if name not in comp_map or v != comp_map[name]:
             return name
 
 def solution(participant, completion):
@@ -23,3 +15,7 @@ def solution(participant, completion):
         if hash(p) == left_hash:
             return p
 
+
+assert solution2(['a', 'b', 'c'], ['a', 'b']) == 'c'
+assert solution2(['a', 'b', 'c', 'c', 'd'], ['a', 'b', 'c', 'd']) == 'c'
+assert solution2(['a', 'b', 'c', 'c', 'c', 'd', 'd'], ['a', 'b', 'c', 'c', 'c', 'd']) == 'd'
