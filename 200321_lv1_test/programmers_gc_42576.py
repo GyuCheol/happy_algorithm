@@ -1,10 +1,10 @@
 
 
-def solution(participant, completion):
+def solution2(participant, completion):
     d = {}
 
     for p in participant: # O(N)
-        if d.__contains__(p):
+        if p in d:
             d[p] = d[p] + 1
         else:
             d[p] = 1
@@ -15,3 +15,11 @@ def solution(participant, completion):
     for name, v in d.items(): # O(N)
         if v == 1:
             return name
+
+def solution(participant, completion):
+    left_hash = sum([hash(x) for x in participant]) - sum([hash(x) for x in completion])
+
+    for p in participant:
+        if hash(p) == left_hash:
+            return p
+
