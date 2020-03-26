@@ -19,11 +19,7 @@ def solution(answers):
 
     max_mark = max(marks)
 
-    for mark, id in zip(marks, range(3)):
-        if mark == max_mark:
-            answer.append(id + 1)
-
-    return answer
+    return [id + 1 for (mark, id) in zip(marks, range(3)) if mark == max_mark]
 
 
 print(solution([1,2,3,4,5]))
