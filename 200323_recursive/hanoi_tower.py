@@ -10,7 +10,7 @@ def solution(n, f, t, tmp):
     print(f , '->', t) # 
     solution(n - 1, tmp, t, f)
 
-solution(5, 'A', 'C', 'B')
+solution(3, 'A', 'C', 'B')
 
 
 # F(0) = 0

@@ -1,7 +1,7 @@
 def solution(heights):
 
     heights = []
-    answers = [0]*len(heights)
+    answers = [0]
     value = 0
 
     for i in range(1,len(heights),1):
@@ -12,8 +12,6 @@ def solution(heights):
             else:
                 value = 0
             answers.append(value)
-        
-
 
     return answers
 

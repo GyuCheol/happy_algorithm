@@ -1,4 +1,4 @@
-import random
+
 def solution(answers):
 
     a1 = [1,2,3,4,5] * 2000
@@ -6,29 +6,19 @@ def solution(answers):
     c3 = [3,3,1,1,2,2,4,4,5,5] * 1000
 
     p = [0]*3
-    q = [random.randint(1,6) for r in range(10000)]
 
-    for i,j in zip(a1,q):
+    for i,j in zip(a1,answers):
         if i == j:
             p[1] += 1
     
-    for i,j in zip(b2,q):
+    for i,j in zip(b2,answers):
         if i == j:
             p[2] += 1
 
-    for i,j in zip(c3,q):
+    for i,j in zip(c3,answers):
         if i == j:
             p[3] += 1
 
-    return p        
+    return p 
 
 
-        
-
-    
-
-
-
-
-    answer = []
-    return answer

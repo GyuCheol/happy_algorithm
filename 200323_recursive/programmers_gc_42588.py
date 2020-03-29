@@ -25,3 +25,8 @@ def solution(heights):
 print(solution([6,9,5,7,4]))
 print(solution([3,9,9,3,5,7,2]))
 print(solution([1,5,3,6,7,6,5]))
+
+l = [1, 2, 3, 4]
+
+for i in l[::-1]:
+    print(i)
