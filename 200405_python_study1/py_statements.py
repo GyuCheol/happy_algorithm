@@ -1,12 +1,12 @@
 
-def foo():
-    print('a')
-    return 1
+lists = ['a', 'e', 'o']
+s = input()
 
-def bar():
-    print('b')
-    return 2
+for i in range(len(s)):
+    print(s[i])
 
-a, b = 0, 0
+for c in s:
+    print(c)
 
-a, b = foo(), bar()
+if "a" in lists:
+    print("a가 포함됨")
