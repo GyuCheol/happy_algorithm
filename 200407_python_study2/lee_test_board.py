@@ -20,3 +20,21 @@ for i, c in enumerate(['A', 'B', 'C']):
 # 0, A
 # 1, B
 # 2, C
+
+a = 2
+
+def func():
+    global a
+
+    a = 1
+    print(a)
+
+func()
+
+print(a)
+
+def f(pos, pos2, /, pos_or_kwd, *, kwd1, kwd2):
+    pass
+
+f()
+
