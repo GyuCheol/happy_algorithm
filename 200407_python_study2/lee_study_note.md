@@ -7,7 +7,7 @@
 for문은 Pascal, C 언어와는 조금 다름.
 파이썬의 for문은 시퀀스의 아이템을 반복함.
 
-## whilte문
+## while문
 ```
 while_stmt ::=  "while" assignment_expression ":" suite
                 ["else" ":" suite]
