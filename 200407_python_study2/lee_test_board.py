@@ -38,3 +38,4 @@ def f(pos, pos2, /, pos_or_kwd, *, kwd1, kwd2):
 
 f()
 
+
