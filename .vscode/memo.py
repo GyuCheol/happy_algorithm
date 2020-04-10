@@ -1,14 +1,7 @@
-n = input()
-num_list =  list()
-for i in n:
-    num_list.append(int(i))
-num_list = reversed(sotred(num_list))
-res = ''
-for i in num_list:
-    res += str(i)
-print(res)
+# number = input()
+# n = []
+# for _ in range(number):
+#     n.append(list(map(int,input().split())))
+# #n = [(x,y) for x in range(number) for y in range(number)]
+# n = sotred(n, key = lambda x:(x[0])
 
-
-new = sorted(n)
-for i in range(-1,0,-1):
-    print('n', end = '')

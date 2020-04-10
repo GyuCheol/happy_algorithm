@@ -1,26 +1,15 @@
-number = int(input())
-new = 0
-
+n  = int(input())
+tmp = n
 count = 0
 
 
-while(1):
+while(True):
    
-    if (number) >= 10:
-        first = number/10
-        second = number%10
-        new = first + 2 * second        
-        count += 1
-        if (new == number):
-            print(count)
-            break
-        else:
-            continue
-
-    else:
-        print(count+1)
+    numbers = [tmp // 10, tmp % 10]
+    tmp = (numbers[1] * 10) + (sum(numbers) % 10)
+    count += 1
+    if (tmp == n):
         break
-    
-
-
+           
+print(count)
 
