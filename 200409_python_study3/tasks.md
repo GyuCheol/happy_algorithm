@@ -8,3 +8,5 @@ https://programmers.co.kr/learn/courses/30/lessons/42587
 쇠막대기
 https://programmers.co.kr/learn/courses/30/lessons/42585
 
+회사에 있는 사람
+https://www.acmicpc.net/problem/7785
