@@ -73,7 +73,13 @@ shallow copy를 실행하여 사본을 생성.
 append와 pop 함수를 이용하면 된다.
 
 ## List를 queue처럼 활용
+```py
+from collections from deque
+q = deque()
 
+q.append(1)
+q.popleft()
+```
 append와 popleft 함수를 이용하면 된다.
 
 ## List Comprehensions
