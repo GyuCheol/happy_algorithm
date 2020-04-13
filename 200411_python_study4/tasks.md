@@ -5,4 +5,6 @@ collections 패키지
 
 itertools 패키지
 
-
+해시로 복습
+https://programmers.co.kr/learn/courses/30/lessons/42576
+https://programmers.co.kr/learn/courses/30/lessons/42577
