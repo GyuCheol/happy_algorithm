@@ -62,6 +62,10 @@ from sound.effects import * : ?
 __all__ = ["echo", "surround", "reverse"]
 위 서브 모듈들을 import한다.
 
+__name__ <- __ : private의 뜻.
+__name__if 'main' : python이 내 스크립트를 실행
+__name__if (모듈이름) : module로서 import됨
+
 ## 6.4.2. Intra-package References
 from sound.effects import echo = from .. import echo
 
@@ -69,4 +73,5 @@ from sound.effects import echo = from .. import echo
 ## 6.4.3. Packages in Multiple Directories
 __path__. : 패키지의 __init__.py 를 실행하기 전 이 파일이 들어있는 디렉토리의 이름을 포함하는 리스트로 초기화된다.
 
-
+__name__ symbol table
+__init__.py  현재 package에서 초기화될때 실행해야 하는 스크립트인지?
