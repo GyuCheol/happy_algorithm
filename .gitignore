@@ -4,6 +4,10 @@ __pycache__/
 *$py.class
 .data/
 
+cat_data/
+dogs-cats-images/
+dogs-vs-cats/
+
 # C extensions
 *.so
 
