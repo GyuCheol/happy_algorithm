@@ -17,7 +17,7 @@ import torch.utils.data as data
 import torchvision.datasets as datasets
 import torchvision.models as models
 from PIL import Image
-
+from collections import OrderedDict
 from multiprocessing import Process, freeze_support
 
 # 경로? path
@@ -75,6 +75,28 @@ class Net(nn.Module):
         x = self.fc3(x)
         return x
 
+def save_model(model, model_dir):
+    path = os.path.join(model_dir, 'model.pth')
+    torch.save(model.cpu().state_dict(), path)
+
+def load_model(model):
+    state_dict = torch.load('./model.pth')
+    # create new OrderedDict that does not contain `module.`
+    new_state_dict = OrderedDict()
+    for k, v in state_dict.items():
+        name = k.replace('module.', '')
+        new_state_dict[name] = v
+
+    return model.load_state_dict(new_state_dict)
+
+def model_fn(model_dir):
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model = torch.nn.DataParallel(Net())
+    with open(os.path.join(model_dir, 'model.pth'), 'rb') as f:
+        model.load_state_dict(torch.load(f))
+
+    return model.to(device)
+
 
 if __name__ == '__main__':    
     torch.multiprocessing.freeze_support()
@@ -111,6 +133,7 @@ if __name__ == '__main__':
                         pin_memory=False)
 
     net = Net()
+    load_model(net)
     
     if torch.cuda.device_count() > 1:
         print("Let's use", torch.cuda.device_count(), "GPUs!")
@@ -125,7 +148,7 @@ if __name__ == '__main__':
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.SGD(net.parameters(), lr = 0.004)
 
-    for epoch in range(45):
+    for epoch in range(3):
         running_loss = 0.0
         acc = 0.
         correct = 0
@@ -152,4 +175,11 @@ if __name__ == '__main__':
                 running_loss = 0.0
                 
     print('Finished Training')
+
+    save_model(net, './')
+
+    
+
+
+
 

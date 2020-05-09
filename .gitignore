@@ -7,6 +7,7 @@ __pycache__/
 cat_data/
 dogs-cats-images/
 dogs-vs-cats/
+*.pth
 
 # C extensions
 *.so
