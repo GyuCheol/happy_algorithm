@@ -13,12 +13,15 @@ import argparse
 import csv
 import os.path
 import torch.nn.parallel
-import torch.utils.data as data
+import torch.utils.data as datautil
 import torchvision.datasets as datasets
 import torchvision.models as models
+import matplotlib.pyplot as plt
+
 from PIL import Image
 from collections import OrderedDict
 from multiprocessing import Process, freeze_support
+from torchvision.models import AlexNet
 
 # 경로? path
 # 상대 경로를 나타내는 keyword
@@ -76,11 +79,11 @@ class Net(nn.Module):
         return x
 
 def save_model(model, model_dir):
-    path = os.path.join(model_dir, 'model.pth')
+    path = os.path.join(model_dir, 'alexnet.pth')
     torch.save(model.cpu().state_dict(), path)
 
-def load_model(model):
-    state_dict = torch.load('./model.pth')
+def load_model(model, filename):
+    state_dict = torch.load(filename)
     # create new OrderedDict that does not contain `module.`
     new_state_dict = OrderedDict()
     for k, v in state_dict.items():
@@ -92,13 +95,19 @@ def load_model(model):
 def model_fn(model_dir):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = torch.nn.DataParallel(Net())
-    with open(os.path.join(model_dir, 'model.pth'), 'rb') as f:
+    with open(os.path.join(model_dir, 'alexnet.pth'), 'rb') as f:
         model.load_state_dict(torch.load(f))
 
     return model.to(device)
 
+def imshow(img):
+    img = img / 2 + 0.5     # unnormalize
+    npimg = img.numpy()
+    plt.figure(figsize=(10, 10))
+    plt.axis("off")
+    plt.imshow(np.transpose(npimg, (1, 2, 0)))
 
-if __name__ == '__main__':    
+def train():
     torch.multiprocessing.freeze_support()
 
     traindir = os.path.join('./200508_cat_classification/dogs-vs-cats', 'train')#경로를 병합함 .
@@ -106,7 +115,7 @@ if __name__ == '__main__':
     
     normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
     
-    train_loader = data.DataLoader(
+    train_loader = datautil.DataLoader(
             TrainImageFolder(traindir,
                             transforms.Compose([
                                 transforms.RandomResizedCrop(224),
@@ -119,7 +128,7 @@ if __name__ == '__main__':
                             num_workers=4,
                             pin_memory=True)
     
-    test_loader = data.DataLoader(
+    test_loader = datautil.DataLoader(
         TestImageFolder(testdir,
                         transforms.Compose([
                             transforms.Resize(256),
@@ -132,8 +141,10 @@ if __name__ == '__main__':
                         num_workers=1,
                         pin_memory=False)
 
-    net = Net()
-    load_model(net)
+    net = AlexNet()
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    net = net.to(device)
+    load_model(net, './alexnet.pth')
     
     if torch.cuda.device_count() > 1:
         print("Let's use", torch.cuda.device_count(), "GPUs!")
@@ -171,15 +182,59 @@ if __name__ == '__main__':
             correct += prediction.eq(labels.data.view_as(prediction)).cpu().sum()
                 
             if i % 2000 == 1999:
-                print('[%d, %5d] loss: %.6f acc : %.6f' % (epoch + 1, i+1, running_loss/2000, 100*correct/((i+1)*4)))
+                total = (i+1) * 4
+                print(f'[{epoch + 1}, {i + 1:5d}] loss: {running_loss / 2000:.6f} acc : {correct} / {total}')
                 running_loss = 0.0
                 
     print('Finished Training')
 
     save_model(net, './')
 
+class CustomImageFolder(datasets.ImageFolder):
     
+    def __getitem__(self, index):
+        filename = self.imgs[index]
 
+        files = filename[0].split('\\')
 
+        real_idx = int(files[len(files) - 1].split('.')[0])
+        return super(CustomImageFolder, self).__getitem__(index)[0], 0 if real_idx <= 3 else 1
 
+def test():
+    net = Net()
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    net = net.to(device)
+    load_model(net, './model.pth')
 
+    img_dir = os.path.join('./200508_cat_classification/dogs-vs-cats', 'custom')
+    normalize = transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+
+    img_loader = datautil.DataLoader(
+        CustomImageFolder(img_dir,
+                        transforms.Compose([
+                            transforms.Resize(256),
+                            transforms.CenterCrop(224),
+                            transforms.ToTensor(),
+                            normalize,
+                        ])),
+                        batch_size=1,
+                        shuffle=False,
+                        num_workers=1,
+                        pin_memory=False)
+
+    criterion = nn.CrossEntropyLoss()
+
+    for i, data in enumerate(img_loader, 0):
+        inputs, labels = data
+        inputs, labels = Variable(inputs.cuda()), Variable(labels.cuda())
+        
+        outputs = net(inputs)
+        # print(f'{outputs}')
+        loss = criterion(outputs, labels)
+
+        print(loss)
+        # imshow(torchvision.utils.make_grid(img))
+        # loss = criterion(outputs, labels)
+
+if __name__ == '__main__':
+    test()
