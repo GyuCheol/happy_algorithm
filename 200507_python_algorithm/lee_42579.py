@@ -7,9 +7,8 @@ class Play(object):
         self.genre = genre
         self.play = play
         self.genre_dict = genre_dict
-    
 
-def sorting(a: Play, b: Play):
+def sorting(a: Play, b: Play): # Annotation
     
     if a.genre == b.genre:
         if a.play == b.play:
@@ -19,6 +18,9 @@ def sorting(a: Play, b: Play):
     else:
         return b.genre_dict[b.genre] - a.genre_dict[a.genre]
 
+# Runtime에러는 되지만, 컴파일 에러는 안잡힘!
+# 만약 C언어였다면 컴파일 에러!!
+# sorting(5, 1)    
 
 def solution(genres, plays):
     genres_dict = {x: 0 for x in genres}
