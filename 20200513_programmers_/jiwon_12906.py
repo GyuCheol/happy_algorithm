@@ -1,11 +1,13 @@
 def solution(arr):
     new_list = []
     new_list.append(arr[0])
-    for i in range(1,len(arr)):
+
+    # 0, 1, 2, 3, 4, 5 X
+    # 1, 1, 2, 2, 0, 3 O
+    for i in range(1, len(arr)):
 
         if arr[i-1] != arr[i]: 
             new_list.append(arr[i])
-
     
     return new_list
 
