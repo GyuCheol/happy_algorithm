@@ -8,6 +8,7 @@ cat_data/
 dogs-cats-images/
 dogs-vs-cats/
 *.pth
+img_align_celeba/
 
 # C extensions
 *.so
