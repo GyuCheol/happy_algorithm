@@ -1,5 +1,8 @@
 
+# 일곱난쟁이
 # https://www.acmicpc.net/problem/2309
+
+# 2중 루프를 이용한, 2개의 요소를 고르는 경우의 수를 모두 나열하여 풀이
 
 height_list = [int(input()) for n in range(9)]
 
