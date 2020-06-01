@@ -29,9 +29,7 @@ for i, number in enumerate(numbers):
 
 # 남은 값 -1
 while stack:
-    top = stack.pop()
-
-    result[top] = -1
+    result[stack.pop()] = -1
 
 for n in result:
     print(n, end=' ')
