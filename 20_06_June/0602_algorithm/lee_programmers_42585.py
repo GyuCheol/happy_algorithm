@@ -32,12 +32,10 @@ def solution2(arrangement):
 
     for i, ch in enumerate(arrangement):
         
-        
         if ch == '(':
             # 막대기/레이저를 스택에 쌓음
             cnt += 1
         else:
-            
             cnt -= 1
 
             if last_ch == '(':
