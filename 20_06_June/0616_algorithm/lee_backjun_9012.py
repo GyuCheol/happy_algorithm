@@ -26,9 +26,7 @@ def is_corrected(s):
 n = int(input())
 
 for _ in range(n):
-    
     s = input()
-    stack = []
 
     if is_corrected(s):
         print('YES')
