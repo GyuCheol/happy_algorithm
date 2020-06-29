@@ -1,11 +1,12 @@
 
 # 해커스 인강 다운로드 해킹
-# 인강 파일은 AquaPlayer Proxy를 통해 암호화된 동영상DRM 상태인데,
-# 이것을 local에 설치된 PC Agent가 복호화하여 loopback으로 내 PC에 송출해준다.
-# 이 원이를 이용하여 Proxy에게 가상의 HTTP Client로 mp4 파일을 달라고하여 복호화된 영상을 추출한다.
-# 장장 6시간에 걸린 삽질...
+# 인강 파일은 암호화된 동영상DRM 상태인데,
+# 이것을 local에 설치된 AquaPlayer PC Agent가 복호화하여 loopback으로 내 PC에 송출해준다.
+# 이 원리를 이용하여 Proxy에게 가상의 HTTP Client로 mp4 파일을 달라고하면 복호화된 영상을 추출할 수 있다.
 
-# Partial된 mp4는 ffmpeg를 통해 merge한다.
+# 일반 브라우저는 header가 맞지 않아, Denied 상태가 되지만, 가상의 client로 header를 직접 개조하면 문제 없다.
+# 장장 6시간에 걸린 삽질...
+# 개인 목적으로 사용하자. (배포시 처벌된다)
 
 import http
 from http.client import HTTPConnection
@@ -25,7 +26,7 @@ conn = http.client.HTTPSConnection(host, port)
 header = {
     'Accept-Encoding': 'identity;q=1, *;q=0',
     'Connection': 'keep-alive',
-    'Host': 'cdnplayer.cdnetworks.com:8282',
+    'Host': f'{host}:{port}',
     'Range': f'bytes=0-',
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36'
 }
