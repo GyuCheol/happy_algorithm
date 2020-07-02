@@ -1,13 +1,15 @@
 
 # 정수 삼각형
 # https://programmers.co.kr/learn/courses/30/lessons/43105
-# 다이나믹 프로그래밍
+# 다이나믹 프로그래밍 (lv3)
 
 # n은 2차원 배열의 길이
 # 2차원 배열로 memorization 필요해보임
 # d[0][0]이 꼭대기에 있는 마지막 합이라고 생각한다면,
 # 아래와 같이 점화식을 세워볼 수 있겠다.
 # d[0][0] = max(d[n-i][j], d[n-i][j+1]) + triangle[i][j]
+
+# 시간 복잡도 O(n^2)
 
 def solution(triangle):
     n = len(triangle)
