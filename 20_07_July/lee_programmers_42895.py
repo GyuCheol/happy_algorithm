@@ -13,47 +13,38 @@
 # i는 N, NN, NNN, NNNN, NNNNN의 경우
 # 초기값은 d[1], d[N], d[NN], d[NNN], d[NNNN], d[NNNNN]이 정해질 수 있다. (나머진 이 작은 문제들로 도출해야 함)
 
+# 시간 복잡도 O(N)
+
 def solution(N, number):
-    # 최대 100000까지
+    # 최대 99999까지 처리하기 위해 100,000개 배열
     d = [9999] * 100000
     
     # d[1]은 2개로 도달 가능하다. N/N = 1
     # 단, N이 1인 경우 1번으로 가능하나, 아래 식에서 처리됨
     d[1] = 2
+    n_digits = [N, N * 11, N * 111, N * 1111, N * 11111]
 
-    # d[N] = 1, d[NN] = 2, d[NNN] = 3... 으로 채워준다.
-    n_digits = []
-    t = N
-    for i in range(5):
-        n_digits.append(t)
-        d[t] = i + 1
-        t *= 10
-        t += N
+    for id, digit in enumerate(n_digits):
+        d[digit] = id + 1
+
+    operators = [
+        lambda x, y : x * n,
+        lambda x, y : x + n,
+        lambda x, y : x // n,
+        lambda x, y : n // x,
+        lambda x, y : x - n,
+        lambda x, y : n - x
+    ]
 
     for i in range(1, len(d)):
-        
-        if d[i] == 0:
-            d[i] = d[i-1] + d[1]
 
         for n in n_digits:
-            if (i * n) < 100000:
-                d[i * n] = min(d[i * n], d[i] + d[n])
             
-            if (i + n) < 100000:
-                d[i + n] = min(d[i + n], d[i] + d[n])
+            for operator in operators:
+                val = operator(i, n)
 
-            if (i // n) > 1:
-                d[i // n] = min(d[i // n], d[i] + d[n])
-
-            if (n // i) > 1:
-                d[n // i] = min(d[n // i], d[i] + d[n])
-            
-            if (i - n) > 1:
-                d[i - n] = min(d[i - n], d[i] + d[n])
-
-            if (n - i) > 1:
-                d[n - i] = min(d[n - i], d[i] + d[n])
-            
+                if 1 < val < 100000:
+                    d[val] = min(d[val], d[i] + d[n])
 
     if d[number] > 8:
         return -1
@@ -61,3 +52,4 @@ def solution(N, number):
     return d[number]
 
 print(solution(5, 56))
+print(solution(5, 2))
