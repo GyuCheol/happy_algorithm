@@ -16,7 +16,6 @@ import torch.nn.parallel
 import torch.utils.data as datautil
 import torchvision.datasets as datasets
 import torchvision.models as models
-import matplotlib.pyplot as plt
 
 from PIL import Image
 from collections import OrderedDict
