@@ -1,10 +1,14 @@
-from math import sqrt
+# 6월 17일
 
-# 팬디지털(Pandigital) 문제 
+# 팬디지털(Pandigital) 문제
+# 완전탐색 (순열 Permutation)
+
 # 팬디지털 : 1~n까지 숫자 1개씩만 이용해서 만든 수
 # n자리 모든 팬디지털 소수 개수와 가능한 경우 중 가장 큰 소수 출력
 # permuation 순열 알고리즘을 이용한 모든 경우의 수 나열
 # 시간 복잡도 O(n!)
+
+from math import sqrt
 
 n = int(input())
 cnt = 0

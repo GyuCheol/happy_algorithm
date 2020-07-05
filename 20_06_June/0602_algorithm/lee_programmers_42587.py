@@ -1,8 +1,9 @@
-from collections import deque
 
 # 프린터
 # https://programmers.co.kr/learn/courses/30/lessons/42587
 # Queue 처리 문제
+
+from collections import deque
 
 def solution(priorities, location):
     answer = 0

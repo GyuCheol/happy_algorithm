@@ -1,3 +1,4 @@
+# 6월 29일
 
 # 타일 장식물
 # https://programmers.co.kr/learn/courses/30/lessons/43104?language=python3

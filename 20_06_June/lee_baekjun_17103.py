@@ -1,4 +1,4 @@
-from math import sqrt
+# 6월 20일
 
 # 골브바흐의 파티션
 # https://www.acmicpc.net/problem/17103
@@ -7,6 +7,7 @@ from math import sqrt
 # 즉 50만까지의 소수를 구해서, 각 소수를 2가지씩 나열하는 경우의 수를 이용해서
 # 모든 케이스를 미리 구해둔 후, 결과 출력
 
+from math import sqrt
 
 def is_prime(n):
     
