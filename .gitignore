@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 .data/
+*.mp4
 
 cat_data/
 dogs-cats-images/
