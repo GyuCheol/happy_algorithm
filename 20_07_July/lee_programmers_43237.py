@@ -4,17 +4,14 @@
 # https://programmers.co.kr/learn/courses/30/lessons/43237
 # 이분탐색 - lv3
 
-# 정렬된 상태에서 시작한다. (특정 위치 이상의 모든 요소를 기준액 이상으로 처리가능)
 # 최적의 상한액을 이분 탐색하여 최적 값 찾기 (logN)
 # 초기 상한 범위를 0~최댓값으로 지정하고, 합계에 따라 상한액 범위를 이분 탐색하기
-
-# 시간 복잡도 O(NlogN) 정렬 비용 및, 이분 탐색하면서 summation 과정
+# 시간 복잡도 O(NlogN) 이분 탐색(logN) * summation(N)
 
 def solution(budgets, M):
-    sorted_budgets = sorted(budgets)
 
     # 첫 상한액 범위를 0~가장 큰 값 + 1로 지정 (내림 발생 때문에 +1)
-    end = sorted_budgets[-1] + 1
+    end = max(budgets) + 1
     begin = 0
 
     # 결과 값 비교 및 최적 결과 저장
@@ -30,10 +27,10 @@ def solution(budgets, M):
         # print(tmp)
 
         # 합계 구하기
-        s = sum([x if x < tmp else tmp for x in sorted_budgets])
+        s = sum([x if x < tmp else tmp for x in budgets])
         
+        # 합계가 예산 이내인 경우
         if s <= M:
-            # s가 M에 맞게 들어온 경우,
             # 이전 결과보다 최적이라면, 저장
             if diff > (M - s):
                 diff = M - s
@@ -43,11 +40,11 @@ def solution(budgets, M):
             if begin == tmp:
                 break
 
-            # 더 큰 상한선으로 가능한지 범위 넓히기
+            # 더 큰 상한선으로 가능한지 범위 넓히기 >>
             begin = tmp
 
         else:
-            # 결과가 크므로, 범위 좁히기
+            # 결과가 크므로, 범위 좁히기 <<
             end = tmp
 
 
