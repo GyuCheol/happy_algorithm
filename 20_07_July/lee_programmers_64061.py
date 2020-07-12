@@ -13,6 +13,8 @@
 # 크레인으로 가져갈 때 마다 stack 맨 윗 값과 비교하여 같으면 pop
 # 아니면 append
 
+# 시간 복잡도 O(N^2) board에 있는 걸 로딩하므로..
+
 def solution(board, moves):
     stack_list = [[] for x in range(len(board))]
     result = []

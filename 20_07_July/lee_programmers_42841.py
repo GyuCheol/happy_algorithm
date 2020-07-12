@@ -5,7 +5,8 @@
 # https://programmers.co.kr/learn/courses/30/lessons/42841
 # 완전 탐색 - lv2
 
-# 무식하게 111~999까지 돌면서 답의 가능성이 있는지 모두 탐색하여 비교한다.
+# 무식하게 123~987까지 돌면서 답의 가능성이 있는지 모두 탐색하여 비교한다.
+# 시간 복잡도 O(N)
 
 def solution(baseball):
     answer = 0
@@ -26,7 +27,7 @@ def solution(baseball):
         return (x // 100, (x // 10) % 10, x % 10)
 
     # 111~999 루프
-    nums = [converting_three_numbers(x) for x in range(111, 1000) if check(x)]
+    nums = [converting_three_numbers(x) for x in range(123, 988) if check(x)]
     converted_baseball = [(converting_three_numbers(numbers), s, b) for numbers, s, b in baseball]
 
     for i_numbers in nums:
