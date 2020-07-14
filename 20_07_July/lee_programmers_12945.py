@@ -6,7 +6,7 @@
 
 # bottom-up 방식으로 풀이
 
-# 시간 복잡도 O(logN)
+# 시간 복잡도 O(N)
 
 def solution(n):
     d = [0] * (n+ 1)
