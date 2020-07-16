@@ -13,7 +13,7 @@
 # 우선순위 연산자부터 피연산자를 가져와 연산한다.
 # 조금 의아하지만, 대충 이렇게라도 풀어야했던...
 
-# 시간 복잡도 O(N)
+# 시간 복잡도 O(N) 엄밀히 따지면 O(6*6*N)
 
 import re
 from itertools import permutations
@@ -23,40 +23,30 @@ def solution(expression):
     # 연산자, 숫자 분할
     params = re.split('([-+*])', expression)
     
+    # 피연산자들을 미리 int화 시킨다.
+    for id in range(len(params)):
+        if params[id] not in {'+', '-', '*'}:
+            params[id] = int(params[id])
+
     def calculate(priority):
-        operators = []
-        numbers = []
+        clone = params[:]
 
-        for param in params:
-            if param in {'+', '-', '*'}:
-                operators.append(param)
-            else:
-                numbers.append(int(param))
-        
         for prior in priority:
-
             id = 0
 
-            while id < len(operators):
-                op = operators[id]
-
-                if op == prior:
-                    operand = numbers[id:id+2]
-                    operators.remove(op)
-
-                    if op == '*':
-                        numbers[id:id+2] = [operand[0] * operand[1]]
-                    elif op == '+':
-                        numbers[id:id+2] = [operand[0] + operand[1]]
+            while id < len(clone):
+                
+                if clone[id] == prior:
+                    if clone[id] == '*':
+                        clone[id-1:id+2] = [clone[id-1] * clone[id+1]]
+                    elif clone[id] == '+':
+                        clone[id-1:id+2] = [clone[id-1] + clone[id+1]]
                     else:
-                        numbers[id:id+2] = [operand[0] - operand[1]]
+                        clone[id-1:id+2] = [clone[id-1] - clone[id+1]]
                 else:
                     id += 1
                         
-
-        
-        return abs(numbers[0])
-
+        return abs(clone[0])
 
     for p in permutations({k for k in params if k in {'+', '-', '*'}}):
         answer = max(answer, calculate(p))
