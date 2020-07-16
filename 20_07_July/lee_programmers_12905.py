@@ -33,7 +33,7 @@ def solution(board):
     for y in range(1, h + 1):
         for x in range(1, w + 1):
             
-            # 채워져 있고, 왼쪽, 위, 왼쪽위 모두 같은 값인 경우
+            # 채워져 있고, 왼쪽, 위, 왼쪽위 모두 채워져야한다
             # 현재 값을 정사각형이 가능한 변의 길이로 지정
             if tmp[y][x] > 0:
 
