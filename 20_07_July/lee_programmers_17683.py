@@ -25,20 +25,27 @@
 # lv2 문제 중에서도 난이도가 악랄해보인다. lv3는 되어 보이는데?
 
 # 함정은 C# 같은 #이 있는 음이다.
-# C#, D#, F#, G#, A#를 다른 문자열로 바꾸는게 건강에 좋다.
+# C#, D#, F#, G#, A#가 2글자라 1글자로 취급하는 다른 음과 계산에 문제가 생긴다.
+# 그래서 다른 1글자로 변환 후 연산을 통합했다.
+# 어이가 없는점.
+# 문제지에 언급되지 않은 E#이 있다; ????
+# None 문자열은 (None)으로 리턴해야한다. ???
+# 문제지의 오류
 
 # 시간 복잡도 : O(N^2) 아마 문자열 돌면서 문자열 연산까지 하기 때문?
 
-sharp_map = {
-    'C': '!',
-    'D': '@',
-    'F': '#',
-    'G': '$',
-    'A': '%'
-}
 
 def solution(m, musicinfos):
     l = []
+    sharp_map = {
+        'C': '!',
+        'D': '@',
+        'F': '#',
+        'G': '$',
+        'A': '%',
+        'E': '^',
+        'B': '&'
+    }
 
     def convert_sharp_sound(s):
         tmp = []
@@ -63,21 +70,22 @@ def solution(m, musicinfos):
 
         # hh:mm > 분 단위로 변환 후 플레이 타임 구하기
         playtime = get_minutes(end) - get_minutes(start)
+        # playtime과 맞추기 위해 2글자 음을 1글자로 변환
+        music = convert_sharp_sound(music)
+
         
         if playtime > len(music):
             full_music = music * (playtime // len(music)) + music[:playtime % len(music)]
         else:
             full_music = music[:playtime]
-        
-        full_music = convert_sharp_sound(full_music)
 
         # 얼핏 들은게 포함되었는가?
         if m in full_music:
             # 재생 시간, 순서 추가
             # 정렬 기준이 플레이 타임이 긴 > id 순서이기 때문에 음수로 저장
             l.append((-playtime, id, title))
-
-    return sorted(l)[0][2] if l else '`(None)`'
+    
+    return '(None)' if len(l) == 0 else sorted(l)[0][2]
 
 print(solution('ABC#', ['11:59,12:06,HELLO,ABC#', '11:59,12:14,HELLO2,ABC']))
 print(solution('ABCDEFG', ['12:00,12:14,HELLO,CDEFGAB', '13:00,13:05,WORLD,ABCDEF']))
