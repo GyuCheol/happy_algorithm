@@ -2,14 +2,14 @@
 
 # 야근 지수
 # https://programmers.co.kr/learn/courses/30/lessons/12927
-# 연습문제 - lv3
+# 연습문제 - lv3 (Greedy + Heap?)
 
 # 힙을 이용한 문제?
 # 최댓값을 계속 줄이기
 # n이 백만이하이므로, 백만 * log2000 적절함
 # 다만, input이 더 많아지고, n 값이 1억, 10억까지 간다면 최적화 필요함!
 
-# O(NlogN)
+# O(NlogM) (N이 최대 100만) M은 works의 크기
 
 import heapq
 
