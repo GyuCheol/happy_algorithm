@@ -1,7 +1,7 @@
 # Improving skills of Algorithm & Data Structure
 
 ## Solving Languages : C++, Java, Python
-<img src="./img/200727.png" width="400">
+<img src="./img/200727.PNG" width="400">
 
 ## Summary
 
