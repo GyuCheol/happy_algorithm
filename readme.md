@@ -1,10 +1,18 @@
 # Improving skills of Algorithm & Data Structure
 
-## Solving Languages : c++, java, python
+## Solving Languages : C++, Java, Python
+<img src="./img/200727.png" width="400">
+
+## Summary
+
+- 4월 : Python 기초, Pytorch 입문
+- 5월 : Pytorch 활용 딥러닝 예제 (이미지 분류, 적대적 생성)
+- 6월 : Python 기초 알고리즘 (백준)
+- 7월 : Python, C++, Java 중급 알고리즘 (프로그래머스)
 
 ### 각 풀이 문제마다 포함해야 될 내용들
 
-- 문제 출처 : 문제 번호 및 문제를 채점할 수 있는 링크
+- 문제 링크 : 문제 식별 번호 및 문제를 채점 가능한 링크
 - 날짜 : 언제 풀었는지?
 - 문제 유형 : DFS, DP, BFS, 그래프, Greedy 등 문제 유형 (복합 문제는 경우 DFS+DP처럼 표시)
 - 시간 복잡도 : 소스 코드의 시간 복잡도 빅오 표기법으로 표기 (시간 복잡도를 분석할 줄 모르면 안됨!)

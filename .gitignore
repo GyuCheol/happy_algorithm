@@ -5,6 +5,9 @@ __pycache__/
 .data/
 *.mp4
 
+.vs/
+java/out/
+
 cat_data/
 dogs-cats-images/
 dogs-vs-cats/
