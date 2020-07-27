@@ -1,6 +1,6 @@
 # Improving skills of Algorithm & Data Structure
 
-## Solving Langs : c++, java, python
+## Solving Languages : c++, java, python
 
 ### 각 풀이 문제마다 포함해야 될 내용들
 
