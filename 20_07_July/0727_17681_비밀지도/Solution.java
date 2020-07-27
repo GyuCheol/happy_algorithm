@@ -1,17 +1,3 @@
-/*
-* 문제 링크 : https://programmers.co.kr/learn/courses/30/lessons/17681?language=java
-*
-* 각 배열 값을 2진으로 연산할 수 있어야 한다.
-* arr1과 arr2는 2진 | 연산으로 결과에 필요한 비트 결과를 얻을 수 있다.
-* 그 결과를 토대로 각 line을 만들면 된다.
-*
-* line을 만들기 위해 #과 ' ' 문자를 만들어야 하는데
-* 이때 String += 연산자를 이용하면 잉여 String 생성이 많이 되므로
-* StringBuilder 개체로 append와 clear를 반복하여 String 생성하기
-* 각 자릿수가 1인지 0인지 판단하는건 & 연산자로 가능하다.
-*
-* 시간 복잡도 : O(N^2)
-* */
 
 public class Solution {
 

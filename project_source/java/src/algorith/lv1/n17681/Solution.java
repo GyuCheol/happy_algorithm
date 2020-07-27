@@ -1,7 +1,7 @@
 package algorith.lv1.n17681;
 
 /*
-* 문제 링크 : https://programmers.co.kr/learn/courses/30/lessons/17681?language=java
+* 문제 링크 : https://programmers.co.kr/learn/courses/30/lessons/17681
 *
 * 각 배열 값을 2진으로 연산할 수 있어야 한다.
 * arr1과 arr2는 2진 | 연산으로 결과에 필요한 비트 결과를 얻을 수 있다.
