@@ -142,6 +142,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="n12978.hpp" />
     <ClInclude Include="n17681.hpp" />
     <ClInclude Include="n42583.hpp" />
   </ItemGroup>

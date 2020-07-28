@@ -1,4 +1,6 @@
-#include "n42583.hpp"
+// 각 문제 번호에 맞게 hpp 변경
+// 항상 do_test가 테스트 함수임
+#include "n12978.hpp"
 
 using namespace std;
 

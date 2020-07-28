@@ -1,4 +1,4 @@
-package algorith.lv1.n17681;
+package algorithm.lv1.n17681;
 
 /*
 * 문제 링크 : https://programmers.co.kr/learn/courses/30/lessons/17681

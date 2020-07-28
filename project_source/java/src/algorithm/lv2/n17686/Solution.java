@@ -1,4 +1,4 @@
-package algorith.lv2.n17686;
+package algorithm.lv2.n17686;
 
 class Solution {
 

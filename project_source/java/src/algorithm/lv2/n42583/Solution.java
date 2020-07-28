@@ -1,4 +1,4 @@
-package algorith.lv2.n42583;
+package algorithm.lv2.n42583;
 
 import java.util.LinkedList;
 import java.util.Queue;

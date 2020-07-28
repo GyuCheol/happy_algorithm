@@ -1,5 +1,3 @@
-package algorithm.lv3.n12978;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
