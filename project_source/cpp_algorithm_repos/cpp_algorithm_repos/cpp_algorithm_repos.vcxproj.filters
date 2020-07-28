@@ -29,5 +29,8 @@
     <ClInclude Include="n12978.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="n17686.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

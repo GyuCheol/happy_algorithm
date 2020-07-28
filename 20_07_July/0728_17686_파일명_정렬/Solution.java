@@ -1,4 +1,3 @@
-package algorithm.lv2.n17686;
 
 import java.util.Arrays;
 import java.util.regex.Matcher;
