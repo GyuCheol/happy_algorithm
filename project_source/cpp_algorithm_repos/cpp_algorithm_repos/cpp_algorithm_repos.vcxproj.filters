@@ -53,5 +53,8 @@
     <ClInclude Include="n67258.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="n67259.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
