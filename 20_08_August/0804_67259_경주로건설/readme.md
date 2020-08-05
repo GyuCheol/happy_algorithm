@@ -1,5 +1,5 @@
 * 문제 링크 : https://programmers.co.kr/learn/courses/30/lessons/67259
-* 문제 유형 : BFS
+* 문제 유형 : BFS, 다익스트라
 * 시간 복잡도 : O(N^2)
 
 각 좌표를 정점이라 생각하고 다익스트라 알고리즘을 가지고 해결하면 된다.
