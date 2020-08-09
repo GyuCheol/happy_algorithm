@@ -9,8 +9,8 @@
 - 4월 : Python 기초, Pytorch 입문
 - 5월 : Pytorch 활용 딥러닝 예제 (이미지 분류, 적대적 생성)
 - 6월 : Python 기초 알고리즘 (백준)
-- 7월 : Python 문법 활용, 중급 알고리즘 풀이 with C++, Java
-- 8월 : 중급 알고리즘 풀이 (C++, Java, Python)
+- 7월 : Python 문법 활용, 기초/중급 난이도 알고리즘 풀이 with C++, Java
+- 8월 : 중급 난이도 알고리즘 풀이 (C++, Java, Python)
 
 ### 각 풀이 문제마다 포함해야 될 내용들
 
