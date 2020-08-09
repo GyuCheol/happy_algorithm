@@ -143,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="n12978.hpp" />
+    <ClInclude Include="n12983.hpp" />
     <ClInclude Include="n17680.hpp" />
     <ClInclude Include="n17681.hpp" />
     <ClInclude Include="n17683.hpp" />
@@ -155,6 +156,7 @@
     <ClInclude Include="n42892.hpp" />
     <ClInclude Include="n49189.hpp" />
     <ClInclude Include="n60063.hpp" />
+    <ClInclude Include="n64061.hpp" />
     <ClInclude Include="n67258.hpp" />
     <ClInclude Include="n67259.hpp" />
   </ItemGroup>
