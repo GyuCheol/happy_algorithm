@@ -1,7 +1,8 @@
 # Improving skills of Algorithm & Data Structure
+# `To keep consistent solving problems!`
 
 ## Solving Languages : C++, Java, Python
-<img src="./img/200809.PNG" width="400">
+<img src="./img/200810.PNG" width="400">
 
 ## Summary
 

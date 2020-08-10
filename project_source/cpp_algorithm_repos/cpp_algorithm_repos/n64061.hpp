@@ -22,14 +22,16 @@ int solution(vector<vector<int>> board, vector<int> moves) {
 
     for (int move : moves)
     {
-        if (stacks[move - 1].empty())
+        int tmp = move - 1;
+
+        if (stacks[tmp].empty())
         {
             continue;
         }
 
-        int top = stacks[move - 1].top();
+        int top = stacks[tmp].top();
 
-        stacks[move - 1].pop();
+        stacks[tmp].pop();
 
         if (result.empty() == false && result.top() == top)
         {

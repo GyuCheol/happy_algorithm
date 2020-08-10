@@ -1,4 +1,4 @@
-#include "n64061.hpp"
+#include "n67260.hpp"
 
 using namespace std;
 
