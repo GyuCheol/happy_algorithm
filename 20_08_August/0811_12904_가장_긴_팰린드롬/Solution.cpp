@@ -2,7 +2,8 @@
 #include <string>
 using namespace std;
 
-bool check(string& s, int start, int end)
+// call 메모리도 절약하기 위한 처절한 몸부림
+inline bool check(string& s, int start, int end)
 {
     int len = (end - start) / 2;
 

@@ -15,6 +15,10 @@
 
 - C++
 
+함수에 inline 키워드를 붙여 call stack 오버헤드까지 줄일 수 있다.
+
+최고의 성능이 나온다. python에 비해 몇십배 빠르다... ohhhhh WOW!
+
 - Python
 
 - Java
