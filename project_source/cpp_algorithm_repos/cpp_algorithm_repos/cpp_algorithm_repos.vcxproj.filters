@@ -71,5 +71,11 @@
     <ClInclude Include="n64061.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="n67260.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="n12904.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
