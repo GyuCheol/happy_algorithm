@@ -1,5 +1,5 @@
 # Improving skills of Algorithm & Data Structure
-# `To keep consistent solving problems!`
+## `To keep consistent solving problems!`
 
 ## Solving Languages : C++, Java, Python
 <img src="./img/200812.JPG" width="400">
