@@ -24,21 +24,7 @@ class Solution {
             this.loc2 = loc2;
         }
     }
-
-    private static class Line {
-        private int y1;
-        private int x1;
-        private int y2;
-        private int x2;
-
-        public Line(int y1, int x1, int y2, int x2) {
-            this.y1 = y1;
-            this.x1 = x1;
-            this.y2 = y2;
-            this.x2 = x2;
-        }
-    }
-
+    
     private int[][] createLines(Location loc, char[][] map) {
         int[][] tmp = new int[map.length][map[0].length];
 
