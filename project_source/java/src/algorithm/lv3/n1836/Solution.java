@@ -1,4 +1,4 @@
-package algorithm.lv3.n17678;
+package algorithm.lv3.n1836;
 
 import java.util.ArrayList;
 import java.util.HashMap;
