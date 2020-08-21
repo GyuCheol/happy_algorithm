@@ -4,8 +4,6 @@
 ## Solving Languages : C++, Java, Python
 <img src="./img/recently_white.jpg" width="400">
 
-## Summary
-
 ### 월별 알고리즘 풀이 소스 기록하기  
 - 4월 : Python 기초, Pytorch 입문
 - 5월 : Pytorch 활용 딥러닝 예제 (이미지 분류, 적대적 생성)
