@@ -2,7 +2,7 @@
 ## `To keep consistent solving problems!`
 
 ## Solving Languages : C++, Java, Python
-<img src="./img/200819.JPG" width="400">
+<img src="./img/recently_white.jpg" width="400">
 
 ## Summary
 
