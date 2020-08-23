@@ -9,17 +9,71 @@
 # 개인 목적으로 사용하자. (배포시 처벌된다)
 
 import http
-from http.client import HTTPConnection
-from http.client import HTTPSConnection
+from urllib.parse import quote
+
+
+path = '/해커스 챔프스터디/토익/[550점+목표] 해커스 토익 스타트 Listening 후반부/'
+
+file_list = [
+    '02강 [Part3] 11일 Course2 사내업무',
+    '03강 [Part3] 12일 Course1 회의',
+
+'04강 [Part3] 12일 Course2 사업 계획',
+
+'05강 [Part3] 13일 Course1 고객 상담',
+
+'06강 [Part3] 13일 Course2 시설 관리',
+
+'07강 [Part3] 14일 Course1 쇼핑시설',
+
+'08강 [Part3] 14일 Course2 편의시설',
+
+'09강 [Part3] 15일 Course1 여가',
+
+'10강 [Part3] 15일 Course2 교통 및 주거',
+
+'11강 [Part3] Part Test 01 (01번~15번)',
+
+'12강 [Part3] Part Test 02 (16번~39번)',
+
+'13강 [Part4] 16일 Course1 음성메시지',
+
+'14강 [Part4] 16일 Course2 자동 응답 시스템',
+
+'15강 [Part4] 17일 Course1 사내 공지',
+
+'16강 [Part4] 17일 Course2 공공 장소 공지',
+
+'17강 [Part4] 18일 Course1 광고',
+
+'18강 [Part4] 18일 Course2 라디오 방송',
+
+'19강 [Part4] 19일 Course1 교통방송 및 일기예보',
+
+'20강 [Part4] 19일 Course2 뉴스',
+
+'21강 [Part4] 20일 Course1 행사연설',
+
+'22강 [Part4] 20일 Course2 가이드의 안내',
+
+'23강 [Part4] Part Test 01 (01번~15번)',
+
+'24강 [Part4] Part Test 02 (16번~30번)',
+
+'25강 [최신인강 업데이트] [Part 3] 2~3인 대화',
+
+'26강 [최신인강 업데이트] Part 1&2 실수 줄이기',
+
+'27강 [최신인강 업데이트] Part 3 최신경향 분석',
+
+'28강 [최신인강 업데이트] Part2 함축 된 의미 파악하기',
+
+
+]
+
 
 host = 'cdnplayer.cdnetworks.com'
 port = '8283'
-
-# 각 영상마다 이 부분만 손댈 것.
-url_list = [
-    #'/cddr_dnp?url=%252F%25ED%2595%25B4%25EC%25BB%25A4%25EC%258A%25A4%2520%25EC%25B1%2594%25ED%2594%2584%25EC%258A%25A4%25ED%2584%25B0%25EB%2594%2594%252F%25ED%2586%25A0%25EC%259D%25B5%252F%25ED%2595%259C%2520%25EB%258B%25AC%2520%25EC%2595%2588%25EC%2597%2590%2520%25EB%2581%259D%25EB%2582%25B4%25EB%258A%2594%2520%25ED%2595%25B4%25EC%25BB%25A4%25EC%258A%25A4%2520%25ED%2586%25A0%25EC%259D%25B5%2520%25EA%25B8%25B0%25EC%25B6%259C%2520%25EB%25B3%25B4%25EC%25B9%25B4%2520%255B%25EC%25B5%259C%25EC%258B%25A0%25EA%25B0%259C%25EC%25A0%2595%25ED%258C%2590%255D%252F01%25EA%25B0%2595%2520%255BDAY%252001%255D%2520%25EC%25B1%2584%25EC%259A%25A9',
-    '/cddr_dnp?url=%252F%25ED%2595%25B4%25EC%25BB%25A4%25EC%258A%25A4%2520%25EC%25B1%2594%25ED%2594%2584%25EC%258A%25A4%25ED%2584%25B0%25EB%2594%2594%252F%25ED%2586%25A0%25EC%259D%25B5%252F%255B550%25EC%25A0%2590%252B%25EB%25AA%25A9%25ED%2591%259C%255D%2520%25ED%2595%25B4%25EC%25BB%25A4%25EC%258A%25A4%2520%25ED%2586%25A0%25EC%259D%25B5%2520%25EC%258A%25A4%25ED%2583%2580%25ED%258A%25B8%2520Reading%2520%255B%25EB%25AC%25B8%25EB%25B2%2595%255D%252F01%25EA%25B0%2595%2520%25ED%2592%2588%25EC%2582%25AC%2520%25EB%25B0%258F%2520%25EB%25AC%25B8%25EC%259E%25A5%25EC%259D%2598%2520%25EA%25B5%25AC%25EC%25A1%25B0',
-]
 
 conn = http.client.HTTPSConnection(host, port)
 
@@ -31,20 +85,31 @@ header = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36'
 }
 
-for i, url in enumerate(url_list):
-    print(f'Progressing {i}.mp4...')
-    conn.request('GET', url, '', header)
+for file_name in file_list:
+    conn.request('GET', '/cddr_dnp?url=' + quote(path + file_name).replace('%', '%25'), '', header)
+
+    print(f'Progressing {file_name}.mp4...')
 
     resp = conn.getresponse()
 
     print(resp.status, resp.reason)
     print(resp.headers)
 
-    # download
-    with open(f'./{i}.mp4', 'wb') as f:
-        f.write(resp.read())
+    file_name2 = file_name.replace(' ', '_')
 
-    print(f'Finished {i}.mp4!')
+    # download
+    with open(f'./{file_name2}.mp4', 'wb') as f:
+
+        while True:
+            buffer = resp.read(8192)
+
+            f.write(buffer)
+
+            if len(buffer) == 0:
+                break
+
+
+    print(f'Finished {file_name}.mp4!')
     print()
 
 # conn 끊기
