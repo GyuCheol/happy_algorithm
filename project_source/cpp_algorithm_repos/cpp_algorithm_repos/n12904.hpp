@@ -8,7 +8,10 @@ bool check(string& s, int start, int end)
 
     for (int i = 0; i <= len; i++)
     {
-        if (s[start + i] != s[end - 1 - i])
+        int left = start + i;
+        int right = end - 1 - i;
+
+        if (s[left] != s[right])
         {
             return false;
         }
