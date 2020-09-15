@@ -46,23 +46,7 @@ def solution(n, s, a, b, fares):
             min_node = i
             min_value = cost_list2[a] + cost_list2[b] + cost_list[i]
     
-    cost_list3 = [0x7fffffff for _ in range(n + 1)]
-    q = deque()
-    cost_list3[min_node] = 0
-    q.append((min_node, 0))
-
-    while q:
-        node, cost = q.popleft()
-
-        for next, c in path[node]:
-            tmp = cost + c
-
-            if tmp <= cost_list3[next]:
-                cost_list3[next] = tmp
-                q.append((next, tmp))
-
-
-    return cost_list[min_node] + cost_list3[a] + cost_list3[b]
+    return min_value
 
 print(solution(6, 4, 6, 2, [[4, 1, 10], [3, 5, 24], [5, 6, 2], [3, 1, 41], [5, 1, 24], [4, 6, 50], [2, 4, 66], [2, 3, 22], [1, 6, 25]]))
 print(solution(7, 3, 4, 1, [[5, 7, 9], [4, 6, 4], [3, 6, 1], [3, 2, 3], [2, 1, 6]]))
